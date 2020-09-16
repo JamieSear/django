@@ -1,20 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from .models import Players
 
 # Create your views here.
-from django.http import HttpResponse
 
-players = [
-    {'id': 1, 'name': 'Roger Federer', 'age': 34},
-    {'id': 2, 'name': 'Rafael Nadal', 'age': 32},
-    {'id': 3, 'name': 'Novak Djokovic', 'age': 30}
-]
+# players = [
+#     {'id': 1, 'name': 'Roger Federer', 'age': 34},
+#     {'id': 2, 'name': 'Rafael Nadal', 'age': 32},
+#     {'id': 3, 'name': 'Novak Djokovic', 'age': 30}
+# ]
+
+
+def server_error(request):
+    return HttpResponse("<h1>Nope</h1>")
 
 
 def index(request):
-    context = {'players': players}
+    context = {'players': Players.objects.all()}
     return render(request, 'tennis/index.html', context)
 
 
 def show(request, player_id):
-    context = {'player': players[player_id - 1]}
+    context = {'player': Players.objects.get(pk=player_id)}
     return render(request, 'tennis/show.html', context)
