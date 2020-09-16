@@ -20,3 +20,5 @@ urlpatterns = [
     path('tennis/', include('tennis.urls')),
     path('admin/', admin.site.urls),
 ]
+
+handler500 = 'tennis.views.server_error'
