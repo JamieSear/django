@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse
 from .models import Players
 
@@ -15,10 +16,11 @@ def server_error(request):
 
 
 def index(request):
-    context = {'players': Players.objects.all()}
+    context = {'player': Players.objects.all()}
     return render(request, 'tennis/index.html', context)
 
 
+@login_required
 def show(request, player_id):
     context = {'player': Players.objects.get(pk=player_id)}
     return render(request, 'tennis/show.html', context)
