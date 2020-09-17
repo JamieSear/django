@@ -3,8 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='tennis-index'),
-    # path('about/', views.about, name='tennis-about'),
-    # path('<id>/', views.show, name='adoption-show'), # route for /adoption/:id
-    # to accept only numbers as id param
-    path('player<int:player_id>/', views.show, name='tennis-show')
+    path('player<int:player_id>/', views.show, name='tennis-show'),
+    path('player/new/', views.create, name='create-player')
 ]
