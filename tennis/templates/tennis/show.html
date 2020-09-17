@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <h1>Player name:{{ player.name }}</h1>
-    <p>Player age:{{ player.age }}</p>
-    <p>{{ player.name }} has won more {{ player.wins }} titles than other Grand Slams</p>
+    <h1>Player name: {{ player.name }}</h1>
+    <p>Player age: {{ player.age }}</p>
+    <p>{{ player.name }} has won {{ player.wins }} {{ player.amount }} times</p>
 
     <a href="{% url 'tennis-index' %}">Click here to select another player</a>
 </body>
